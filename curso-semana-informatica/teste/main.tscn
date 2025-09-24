@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://4kv5rahutbiy"]
+
+[ext_resource type="Script" uid="uid://bnv2mobmws1jr" path="res://teste/main.gd" id="1_ilc0u"]
+[ext_resource type="Script" uid="uid://bomr2tsp5qn7a" path="res://BT/node/BT_Tree.gd" id="1_wys3t"]
+[ext_resource type="Script" uid="uid://cuiiivqks3cbe" path="res://BT/Blackboard.gd" id="2_0ruhl"]
+[ext_resource type="Texture2D" uid="uid://jsn64aerrtog" path="res://icon.svg" id="3_gooxn"]
+[ext_resource type="Script" uid="uid://bulrpnd6oqake" path="res://BT/node/composite/BT_SequenceNode.gd" id="3_jtiai"]
+[ext_resource type="Script" uid="uid://bg24av0eo5u3g" path="res://teste/is_close_to_mouse.gd" id="4_ilc0u"]
+[ext_resource type="Script" uid="uid://dsxgq7pp504ev" path="res://teste/go_to_mouse_position.gd" id="5_uv4m2"]
+
+[sub_resource type="Resource" id="Resource_jtiai"]
+script = ExtResource("2_0ruhl")
+data = {
+&"CharacterSpeed": 300.0,
+&"DistanceThreshold": 300.0
+}
+metadata/_custom_type_script = "uid://cuiiivqks3cbe"
+
+[node name="Main" type="Node" node_paths=PackedStringArray("bt")]
+script = ExtResource("1_ilc0u")
+bt = NodePath("Character1/BT_Tree")
+
+[node name="Character1" type="CharacterBody2D" parent="."]
+
+[node name="BT_Tree" type="Node" parent="Character1"]
+script = ExtResource("1_wys3t")
+blackboard = SubResource("Resource_jtiai")
+metadata/_custom_type_script = "uid://bomr2tsp5qn7a"
+
+[node name="BT_SequenceNode" type="Node" parent="Character1/BT_Tree"]
+script = ExtResource("3_jtiai")
+metadata/_custom_type_script = "uid://bulrpnd6oqake"
+
+[node name="IsCloseToMouse" type="Node" parent="Character1/BT_Tree/BT_SequenceNode"]
+script = ExtResource("4_ilc0u")
+
+[node name="GoToMousePosition" type="Node" parent="Character1/BT_Tree/BT_SequenceNode"]
+script = ExtResource("5_uv4m2")
+
+[node name="Boneco" type="Sprite2D" parent="Character1"]
+texture = ExtResource("3_gooxn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

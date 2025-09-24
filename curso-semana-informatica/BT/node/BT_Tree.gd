@@ -5,8 +5,9 @@ class_name BT_Tree
 var active: bool = true
 @export var blackboard: Blackboard
 var current_state: int = NodeState.IDLE
+@onready var actor = get_parent()
 
-func tick(actor: Node) -> int:
+func tick() -> int:
 	var response = NodeState.RUNNING
 	for child in get_children():
 		if child is BT_Node:
