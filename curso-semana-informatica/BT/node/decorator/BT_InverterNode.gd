@@ -1,9 +1,4 @@
-extends BT_Node
-
-# Inverter Node for Behavior Tree
-class_name BT_InverterNode
-
-const BT_Node = preload("res://BT/node/BT_Node.gd")
+class_name BT_InverterNode extends BT_Node
 
 @export var child_node: BT_Node = null
 

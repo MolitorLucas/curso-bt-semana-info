@@ -1,9 +1,4 @@
-extends BT_Node
-
-# Repeater Node for Behavior Tree
-class_name BT_RepeaterNode
-
-const BT_Node = preload("res://BT/node/BT_Node.gd")
+class_name BT_RepeaterNode extends BT_Node
 
 @export var repeat_count: int = 1
 var child_node: BT_Node = null
@@ -11,12 +6,10 @@ var child_node: BT_Node = null
 func _ready() -> void:
 	child_node = get_child(0) if get_child_count() > 0 else null
 
-func tick(actor: Node, blackboard: Resource) -> int:
+func tick(actor: Node, blackboard: Blackboard) -> int:
 	if child_node == null:
-		print("ChildNode is not set in BT_RepeaterNode.")
 		return NodeState.FAILURE
 	if repeat_count < 0:
-		print("RepeatCount must be a non-negative integer.")
 		return NodeState.FAILURE
 
 	var count = 0

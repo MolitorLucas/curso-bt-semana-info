@@ -1,11 +1,4 @@
-# Utility functions for Behavior Tree manipulation
-extends Node
-
-class_name BT_ReflectionHelper
-
-# Preloading the required classes to resolve type errors
-const BT_Node = preload("res://BT/node/BT_Node.gd")
-const BT_Tree = preload("res://BT/node/BT_Tree.gd")
+class_name BT_ReflectionHelper extends Node
 
 func insert_subtree_below(root: BT_Node, new_subtree: BT_Node) -> void:
 	root.add_child(new_subtree)

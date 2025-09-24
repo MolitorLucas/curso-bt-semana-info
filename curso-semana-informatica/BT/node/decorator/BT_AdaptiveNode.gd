@@ -1,15 +1,11 @@
-extends BT_Node
+@abstract
+class_name BT_AdaptiveNode extends BT_Node
 
-# Adaptive Node for Behavior Tree
-class_name BT_AdaptiveNode
+@abstract
+func before_adaptive_action(_actor: Node, _blackboard: Resource = null) -> void
 
-const BT_Node = preload("res://BT/node/BT_Node.gd")
-
-func before_adaptive_action(_actor: Node, _blackboard: Resource = null) -> void:
-	print("Before Adaptive method not implemented in %s" % self.name)
-
-func after_adaptive_action(_actor: Node, _blackboard: Resource = null) -> void:
-	print("After Adaptive method not implemented in %s" % self.name)
+@abstract
+func after_adaptive_action(_actor: Node, _blackboard: Resource = null) -> void
 
 func tick(actor: Node, blackboard: Resource = null) -> int:
 	if get_child_count() == 0:

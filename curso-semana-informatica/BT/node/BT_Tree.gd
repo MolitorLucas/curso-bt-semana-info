@@ -1,11 +1,6 @@
 extends Node
 
-# Behavior Tree class
 class_name BT_Tree
-
-const NodeState = preload("res://BT/constants/NodeState.gd").NodeState
-const BT_Node = preload("res://BT/node/BT_Node.gd")
-const Blackboard = preload("res://BT/Blackboard.gd")
 
 var active: bool = true
 @export var blackboard: Blackboard
